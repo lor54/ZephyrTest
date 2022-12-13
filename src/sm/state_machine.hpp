@@ -5,7 +5,7 @@ namespace zephyrtest::sm {
         public:
             explicit StateMachine();
             ~StateMachine();
-            void run();
+            int32_t execute();
 
             static void initialize(void *o);
             static void wait(void *o);

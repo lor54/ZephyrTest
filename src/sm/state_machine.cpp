@@ -1,7 +1,6 @@
 #include "state_machine.hpp"
 
 namespace zephyrtest::sm {
-
     static struct s_object {
         struct smf_ctx ctx;
     } s_obj;
@@ -32,9 +31,9 @@ namespace zephyrtest::sm {
     StateMachine::StateMachine() = default;
     StateMachine::~StateMachine() = default;
 
-    void StateMachine::run() {
+    int32_t StateMachine::execute() {
         smf_set_initial(SMF_CTX(&s_obj), &states[INITIALIZE]);
-
+        
         int32_t ret;
         while(1) {
             ret = smf_run_state(SMF_CTX(&s_obj));
@@ -42,5 +41,6 @@ namespace zephyrtest::sm {
 
             k_msleep(1000);
         }
+        return ret;
     }
 }

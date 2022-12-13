@@ -5,5 +5,5 @@ find_package(Zephyr)
 project(zephyrtest)
 
 include_directories(src)
-file(GLOB_RECURSE SRCS src/**.cpp)
+file(GLOB_RECURSE SRCS src/*.cpp)
 target_sources(app PRIVATE ${SRCS})
