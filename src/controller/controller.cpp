@@ -21,7 +21,6 @@ namespace zephyrtest::controller {
         if (!controller) return;
 
         controller->state_machine.execute();
-        
         return;
     }
 }
