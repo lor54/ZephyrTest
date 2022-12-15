@@ -10,8 +10,6 @@ int main() {
     controller.run();
 
     while(1) {
-        printk(common::stateToString(state_machine.getActualState()));
-        printk("\n");
         k_msleep(1000);
     }
 }
