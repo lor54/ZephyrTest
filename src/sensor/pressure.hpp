@@ -5,7 +5,9 @@ namespace zephyrtest::sensor {
             ~Pressure();
 
             float getActualPressure();
+            float getActualTemperature();
         private:
+            float actualTemperature = 30;
             int index = 0;
 
             /* 10 seconds of increasing altitude real pressure model */

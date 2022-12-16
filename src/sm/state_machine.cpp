@@ -26,10 +26,11 @@ namespace zephyrtest::sm {
         obj->sm->setActualState(WAIT);
 
         sensor::Pressure pressure_sensor;
-        float pressure;
+        float pressure, temperature;
         do {
             pressure = pressure_sensor.getActualPressure();
-            printf("Pressione: %f\n", pressure);
+            temperature = pressure_sensor.getActualTemperature();
+            printf("Pressione: %f + Temperature: %f\n", pressure, temperature);
         } while(pressure > 0);
 
         smf_set_state(SMF_CTX(&s_obj), &states[DONE]);
