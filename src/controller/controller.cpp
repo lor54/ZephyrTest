@@ -1,7 +1,7 @@
 #include "controller.hpp"
 
 #define PRIORITY 7
-#define STACK_SIZE 1024
+#define STACK_SIZE 1024 + 1047 * sizeof(float)
 K_THREAD_STACK_DEFINE(sm_stack_area, STACK_SIZE);
 
 namespace zephyrtest::controller {
@@ -14,6 +14,8 @@ namespace zephyrtest::controller {
 
     void Controller::run() {
         //int32_t ret = state_machine.execute();
+        printk(common::stateToString(state_machine.getActualState()));
+        printk("\n");
     }
 
     void Controller::update(void* instance, void *, void *) {
