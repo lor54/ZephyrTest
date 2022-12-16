@@ -30,7 +30,7 @@ namespace zephyrtest::sm {
         do {
             pressure = pressure_sensor.getActualPressure();
             temperature = pressure_sensor.getActualTemperature();
-            printf("Pressione: %f + Temperature: %f\n", pressure, temperature);
+            printf("Pressure: %f + Temperature: %f\n", pressure, temperature);
         } while(pressure > 0);
 
         smf_set_state(SMF_CTX(&s_obj), &states[DONE]);
