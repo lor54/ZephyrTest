@@ -1,4 +1,7 @@
 #include "state_machine.hpp"
+#include "sensor/pressure.hpp"
+#include "stdio.h"
+
 namespace zephyrtest::sm {
     static struct s_object {
         struct smf_ctx ctx;
@@ -22,7 +25,13 @@ namespace zephyrtest::sm {
         s_object* obj = (s_object*) o;
         obj->sm->setActualState(WAIT);
 
-        printk("Ciao 2!\n");
+        sensor::Pressure pressure_sensor;
+        float pressure;
+        do {
+            pressure = pressure_sensor.getActualPressure();
+            printf("Pressione: %f\n", pressure);
+        } while(pressure > 0);
+
         smf_set_state(SMF_CTX(&s_obj), &states[DONE]);
     }
 
